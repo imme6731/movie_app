@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { nowPalying } from "../../api";
+import { useEffect } from "react";
 
 const MainBanner = styled.section`
   height: 80vh;
@@ -40,7 +41,20 @@ const BlackBg = styled.div`
 `;
 
 export const Home = () => {
-  nowPalying();
+  // 1. 마운트 시 api에 요청
+  // 2. 비동기 통신
+  // 3. 예외 처리
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await nowPalying();
+        console.log(data);
+      } catch (error) {
+        console.log("에러: " + error);
+      }
+    })();
+  }, []);
 
   return (
     <div>
