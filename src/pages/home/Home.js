@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { nowPalying } from "../../api";
 
 const MainBanner = styled.section`
   height: 80vh;
@@ -39,6 +40,8 @@ const BlackBg = styled.div`
 `;
 
 export const Home = () => {
+  nowPalying();
+
   return (
     <div>
       <MainBanner>
