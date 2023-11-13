@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import { nowPalying } from "../../api";
-import { useEffect } from "react";
+import { nowPalying, nowPlaying } from "../../api";
+import { useEffect, useState } from "react";
 
 const MainBanner = styled.section`
   height: 80vh;
@@ -45,24 +45,38 @@ export const Home = () => {
   // 2. 비동기 통신
   // 3. 예외 처리
 
+  const [nowPlayingData, setNowPlayingData] = useState();
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     (async () => {
       try {
-        const data = await nowPalying();
-        console.log(data);
+        const { results } = await nowPalying();
+        setNowPlayingData(results);
+        setLoading(false);
       } catch (error) {
         console.log("에러: " + error);
       }
     })();
   }, []);
+  console.log(loading);
+  console.log(nowPlayingData);
 
   return (
-    <div>
-      <MainBanner>
-        <BlackBg />
-        <h3>머시기저시기</h3>
-        <p>어쩌구저쩌구</p>
-      </MainBanner>
-    </div>
+    <>
+      {loading ? (
+        "loading..."
+      ) : (
+        <div>
+          {nowPalying && (
+            <MainBanner>
+              <BlackBg />
+              <h3>{nowPlayingData[0].title}</h3>
+              <p>{nowPlayingData[0].overview}</p>
+            </MainBanner>
+          )}
+        </div>
+      )}
+    </>
   );
 };
