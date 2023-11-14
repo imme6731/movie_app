@@ -1,16 +1,21 @@
 import { styled } from "styled-components";
 import { nowPalying, nowPlaying } from "../../api";
 import { useEffect, useState } from "react";
+import { IMG_URL } from "../../constants";
 
 const MainBanner = styled.section`
-  height: 80vh;
-  background-color: lightgray;
+  height: 90vh;
+  position: relative;
   padding: 400px 5%;
+  background: url(${IMG_URL}/original/${(props) => props.bgUrl}) no-repeat
+    center / cover;
   h3,
   p {
     position: relative;
   }
   h3 {
+    max-width: 650px;
+    width: 100%;
     font-size: 80px;
     font-weight: 700;
     margin-bottom: 30px;
@@ -18,10 +23,22 @@ const MainBanner = styled.section`
     line-height: 1;
   }
   p {
+    max-width: 650px;
+    width: 100%;
     font-size: 18px;
     font-weight: 400;
     line-height: 26px;
     opacity: 0.8;
+  }
+
+  @media screen and (max-width: 450px) {
+    h3 {
+      font-size: 50px;
+      line-height: 65px;
+    }
+    p {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -46,33 +63,33 @@ export const Home = () => {
   // 3. 예외 처리
 
   const [nowPlayingData, setNowPlayingData] = useState();
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
         const { results } = await nowPalying();
         setNowPlayingData(results);
-        setLoading(false);
+        setIsLoading(false);
       } catch (error) {
         console.log("에러: " + error);
       }
     })();
   }, []);
-  console.log(loading);
+  console.log(isLoading);
   console.log(nowPlayingData);
 
   return (
     <>
-      {loading ? (
+      {isLoading ? (
         "loading..."
       ) : (
         <div>
           {nowPalying && (
-            <MainBanner>
+            <MainBanner $bgUrl={nowPlayingData[0].backdrop_path}>
               <BlackBg />
               <h3>{nowPlayingData[0].title}</h3>
-              <p>{nowPlayingData[0].overview}</p>
+              <p>{nowPlayingData[0].overview.slice(0, 100) + "..."}</p>
             </MainBanner>
           )}
         </div>
