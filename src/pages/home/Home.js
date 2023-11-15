@@ -1,6 +1,8 @@
 import { nowPlaying } from "../../api";
 import { useEffect, useState } from "react";
-import { Banner } from "../../components/Banner";
+import { Banner } from "./Banner";
+import { ShowMovie } from "./ShowMovie";
+import { Loading } from "../../components/Loading";
 
 export const Home = () => {
   // 1. 마운트 시 api에 요청
@@ -27,9 +29,16 @@ export const Home = () => {
   return (
     <>
       {isLoading ? (
-        "loading..."
+        <Loading />
       ) : (
-        <div>{nowPlayingData && <Banner data={nowPlayingData[5]} />}</div>
+        <div>
+          {nowPlayingData && (
+            <>
+              <Banner data={nowPlayingData[0]} />
+              <ShowMovie movieData={nowPlayingData} />
+            </>
+          )}
+        </div>
       )}
     </>
   );

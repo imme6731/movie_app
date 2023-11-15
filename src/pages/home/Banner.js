@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { IMG_URL } from "../constants";
+import { IMG_URL } from "../../constants";
 
 const MainBanner = styled.section`
   height: 90vh;
