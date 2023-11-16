@@ -6,7 +6,7 @@
 - [x] react-router-dom
 - [x] styled-reset
 - [] 폼 관련
-- [] 타이틑 관련
+- [x] 타이틑 관련
 - [] 폰트어썸
 - [x] swiper
 
@@ -16,10 +16,11 @@
 - [x] 각 컴포넌트 제작
 - [x] api 설정
 - [x] loading UI
-- [] header 스크롤 이벤트
-- [] Home ui 및 전체 구성
+- [x] Home ui 및 전체 구성
 - [] Detail ui 및 전체 구성 컴포넌트 구성
+- [] header 스크롤 이벤트
 - [] Search ui 및 전체 구성 컴포넌트 구성
+- [] 전체 페이지 helmet 구성
 - [] 404 페이지 ui 구성
 
 ### new

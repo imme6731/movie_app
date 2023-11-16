@@ -4,6 +4,7 @@ import { Banner } from "./Banner";
 import { ShowMovie } from "./ShowMovie";
 import { Loading } from "../../components/Loading";
 import { Layout } from "../../components/Layout";
+import { PageTitle } from "../../components/PageTitle";
 
 export const Home = () => {
   // 1. 마운트 시 api에 요청
@@ -46,6 +47,7 @@ export const Home = () => {
 
   return (
     <>
+      <PageTitle titleName={"HOME"} />
       {isLoading ? (
         <Loading />
       ) : (
