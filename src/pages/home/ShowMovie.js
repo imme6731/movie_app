@@ -4,8 +4,11 @@ import { styled } from "styled-components";
 import { IMG_URL } from "../../constants";
 import "swiper/css";
 
-const Layout = styled.section`
-  padding: 150px 5%;
+const Container = styled.section`
+  margin-bottom: 120px;
+  &:last-child {
+    margin-bottom: 0;
+  }
   a {
     color: white;
   }
@@ -58,10 +61,10 @@ const params = {
   },
 };
 
-export const ShowMovie = ({ movieData }) => {
+export const ShowMovie = ({ titleName, movieData }) => {
   return (
-    <Layout>
-      <Title>현재 상영 영화</Title>
+    <Container>
+      <Title>{titleName}</Title>
       <Swiper {...params}>
         {movieData.map((data) => (
           <SwiperSlide key={data.id}>
@@ -72,6 +75,6 @@ export const ShowMovie = ({ movieData }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </Layout>
+    </Container>
   );
 };

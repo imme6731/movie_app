@@ -1,8 +1,9 @@
-import { nowPlaying } from "../../api";
+import { nowPlaying, popular, topRated, upcoming } from "../../api";
 import { useEffect, useState } from "react";
 import { Banner } from "./Banner";
 import { ShowMovie } from "./ShowMovie";
 import { Loading } from "../../components/Loading";
+import { Layout } from "../../components/Layout";
 
 export const Home = () => {
   // 1. 마운트 시 api에 요청
@@ -10,21 +11,38 @@ export const Home = () => {
   // 3. 예외 처리
 
   const [nowPlayingData, setNowPlayingData] = useState();
+  const [popData, setPopData] = useState();
+  const [topRatedData, setTopRatedData] = useState();
+  const [upcomingData, setUpcomingData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const { results } = await nowPlaying();
-        setNowPlayingData(results);
+        const { results: nowResults } = await nowPlaying();
+        setNowPlayingData(nowResults);
+
+        const { results: popResults } = await popular();
+        // console.log(popResults);
+        setPopData(popResults);
+
+        const { results: topResults } = await topRated();
+        setTopRatedData(topResults);
+
+        const { results: UCResults } = await upcoming();
+        setUpcomingData(UCResults);
+
         setIsLoading(false);
       } catch (error) {
         console.log("에러: " + error);
       }
     })();
   }, []);
-  console.log(isLoading);
-  console.log(nowPlayingData);
+  // console.log(isLoading);
+  // console.log(nowPlayingData);
+  // console.log(popData);
+  // console.log(topRatedData);
+  // console.log(upcomingData);
 
   return (
     <>
@@ -35,7 +53,18 @@ export const Home = () => {
           {nowPlayingData && (
             <>
               <Banner data={nowPlayingData[0]} />
-              <ShowMovie movieData={nowPlayingData} />
+              <Layout>
+                <ShowMovie
+                  titleName={"현재 상영 영화"}
+                  movieData={nowPlayingData}
+                />
+                <ShowMovie titleName={"인기 영화"} movieData={popData} />
+                <ShowMovie
+                  titleName={"최고 등급 영화"}
+                  movieData={topRatedData}
+                />
+                <ShowMovie titleName={"개봉예정작"} movieData={upcomingData} />
+              </Layout>
             </>
           )}
         </div>
