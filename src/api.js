@@ -9,7 +9,7 @@ const baseUrl = "https://api.themoviedb.org/3/";
 // const upcomingUrl = baseUrl + "movie/upcoming" + ko;
 
 const url = (urlName) => {
-  return baseUrl + `${urlName}` + "?language=ko-kr";
+  return baseUrl + `${urlName}` + "&language=ko-kr";
 };
 
 const options = {
@@ -35,3 +35,8 @@ export const upcoming = () =>
 
 export const movieDetail = (id) =>
   fetch(url(`movie/${id}`), options).then((res) => res.json());
+
+export const movieSearch = (keyword) =>
+  fetch(url(`search/movie?query=${keyword}`), options).then((res) =>
+    res.json()
+  );

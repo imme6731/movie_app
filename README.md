@@ -17,12 +17,12 @@
 - [x] api 설정
 - [x] loading UI
 - [x] Home ui 및 전체 구성
-- [] Detail ui 및 전체 구성 컴포넌트 구성
+- [x] Detail ui 및 전체 구성 컴포넌트 구성
+- [x] Search ui 및 전체 구성 컴포넌트 구성
+- [x] helmet 사용시 뜨는 에러 수정
 - [] header 스크롤 이벤트
-- [] Search ui 및 전체 구성 컴포넌트 구성
 - [] 전체 페이지 helmet 구성
 - [] 404 페이지 ui 구성
-- [] helmet 사용시 뜨는 에러 수정
 
 ### new
 
