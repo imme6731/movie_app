@@ -22,6 +22,7 @@
 - [x] helmet 사용시 뜨는 에러 수정
 - [x] header 스크롤 이벤트
 - [x] 전체 페이지 helmet 구성
+- [x] scrollTo 이벤트 설정
 - [] 404 페이지 ui 구성
 
 ### new
@@ -32,6 +33,7 @@
 - async ~ awite
 - 비구조할당 값명 변경
 - useRef
+- useLocation
 
 #### api작업
 

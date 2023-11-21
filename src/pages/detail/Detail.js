@@ -5,6 +5,7 @@ import { styled } from "styled-components";
 import { IMG_URL } from "../../constants";
 import { Loading } from "../../components/Loading";
 import { PageTitle } from "../../components/PageTitle";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 const Container = styled.div`
   padding: 200px 15%;
@@ -68,6 +69,7 @@ export const Detail = () => {
 
   const [results, setResults] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  useScrollTop();
 
   useEffect(() => {
     (async () => {
