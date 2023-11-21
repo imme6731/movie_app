@@ -9,7 +9,7 @@ const baseUrl = "https://api.themoviedb.org/3/";
 // const upcomingUrl = baseUrl + "movie/upcoming" + ko;
 
 const url = (urlName) => {
-  return baseUrl + `${urlName}` + "&language=ko-kr";
+  return baseUrl + `${urlName}`;
 };
 
 const options = {
@@ -22,21 +22,27 @@ const options = {
 };
 
 export const nowPlaying = () =>
-  fetch(url("movie/now_playing"), options).then((res) => res.json());
+  fetch(url("movie/now_playing?language=ko-kr"), options).then((res) =>
+    res.json()
+  );
 
 export const popular = () =>
-  fetch(url("movie/popular"), options).then((res) => res.json());
+  fetch(url("movie/popular?language=ko-kr"), options).then((res) => res.json());
 
 export const topRated = () =>
-  fetch(url("movie/top_rated"), options).then((res) => res.json());
+  fetch(url("movie/top_rated?language=ko-kr"), options).then((res) =>
+    res.json()
+  );
 
 export const upcoming = () =>
-  fetch(url("movie/upcoming"), options).then((res) => res.json());
+  fetch(url("movie/upcoming?language=ko-kr"), options).then((res) =>
+    res.json()
+  );
 
 export const movieDetail = (id) =>
-  fetch(url(`movie/${id}`), options).then((res) => res.json());
+  fetch(url(`movie/${id}?language=ko-kr`), options).then((res) => res.json());
 
 export const movieSearch = (keyword) =>
-  fetch(url(`search/movie?query=${keyword}`), options).then((res) =>
-    res.json()
+  fetch(url(`search/movie?query=${keyword}&language=ko-kr`), options).then(
+    (res) => res.json()
   );

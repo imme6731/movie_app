@@ -5,7 +5,7 @@
 - [x] styled-components
 - [x] react-router-dom
 - [x] styled-reset
-- [] 폼 관련
+- [x] 폼 관련
 - [x] 타이틑 관련
 - [] 폰트어썸
 - [x] swiper
@@ -20,8 +20,8 @@
 - [x] Detail ui 및 전체 구성 컴포넌트 구성
 - [x] Search ui 및 전체 구성 컴포넌트 구성
 - [x] helmet 사용시 뜨는 에러 수정
-- [] header 스크롤 이벤트
-- [] 전체 페이지 helmet 구성
+- [x] header 스크롤 이벤트
+- [x] 전체 페이지 helmet 구성
 - [] 404 페이지 ui 구성
 
 ### new
@@ -31,6 +31,7 @@
 - try ~ catch
 - async ~ awite
 - 비구조할당 값명 변경
+- useRef
 
 #### api작업
 
