@@ -81,8 +81,8 @@ export const Detail = () => {
         console.log("error:" + error);
       }
     })();
-  }, []);
-  console.log(results);
+  }, [id]);
+  // console.log(results);
 
   return (
     <>
